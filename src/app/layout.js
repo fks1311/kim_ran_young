@@ -4,6 +4,7 @@ import GlobalStyles from "@/lib/GlobalStyles";
 import StyledComponentsRegistry from "../lib/registry";
 import { ThemeProvider } from "styled-components";
 import { theme } from "@/lib/theme";
+import NavBar from "@/components/NavBar";
 
 export default function RootLayout({ children }) {
   return (
@@ -11,7 +12,10 @@ export default function RootLayout({ children }) {
       <body>
         <StyledComponentsRegistry>
           <GlobalStyles />
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={theme}>
+            <NavBar />
+            {children}
+          </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
