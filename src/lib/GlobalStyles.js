@@ -6,8 +6,8 @@ import reset from "styled-reset";
 const GlobalStyles = createGlobalStyle`
   html {
     ${reset};
-    // background-color: #042826;
-    padding: 2rem;
+    font-size:62.5%;
+    padding: 2em 5em;
     background-color: black;
   }
 `;

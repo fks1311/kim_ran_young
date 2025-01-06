@@ -1,16 +1,37 @@
 "use client";
 
 import { useState } from "react";
-import styled from "styled-components";
+import { useRouter } from "next/navigation";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 
 export default function NavBar() {
-  const [active, setActive] = useState(true);
+  const router = useRouter();
+  const [active, setActive] = useState(false);
+  const nav = ["ABOUT", "CARRER", "PROJECT", " GIT & BLOG"];
+  const onClick = (route) => {
+    router.push(route.toLowerCase());
+    setActive(!active);
+  };
+  const variants = {
+    initial: {
+      opacity: 0,
+      scaleY: 0,
+    },
+    animate: {
+      opacity: 1,
+      scaleY: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
 
   return (
     <Layout>
       <Container>
-        <Logo>KIMRANYOUNG</Logo>
+        <Logo onClick={() => router.push("/")}>KIMRANYOUNG</Logo>
         <Hamburger
           onClick={() => {
             setActive(!active);
@@ -21,22 +42,12 @@ export default function NavBar() {
         </Hamburger>
       </Container>
       {active && (
-        <NavLayout $isActive={active}>
-          <Items>
-            ABOUT <MdOutlineKeyboardArrowRight />
-          </Items>
-          <Items>
-            CARRER
-            <MdOutlineKeyboardArrowRight />
-          </Items>
-          <Items>
-            PROJECT
-            <MdOutlineKeyboardArrowRight />
-          </Items>
-          <Items>
-            GIT & BLOG
-            <MdOutlineKeyboardArrowRight />
-          </Items>
+        <NavLayout variants={variants} initial="initial" animate="animate">
+          {nav.map((nav, i) => (
+            <Items key={i} onClick={() => onClick(nav)}>
+              {nav} <MdOutlineKeyboardArrowRight />
+            </Items>
+          ))}
         </NavLayout>
       )}
     </Layout>
@@ -44,14 +55,19 @@ export default function NavBar() {
 }
 
 const Layout = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
   cursor: pointer;
 `;
 const Container = styled.nav`
   height: 30px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
 `;
 const Logo = styled.div`
   color: white;
@@ -71,11 +87,14 @@ const Hamburger = styled.div`
   }
 `;
 
-const NavLayout = styled.div`
-  height: 13rem;
+const NavLayout = styled(motion.div)`
+  position: absolute;
+  height: 20rem;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 1rem;
+  margin-top: 5rem;
   border: 1px solid white;
   border-radius: 10px;
   background-color: white;
