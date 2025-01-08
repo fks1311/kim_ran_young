@@ -9,11 +9,18 @@ import styled from "styled-components";
 export default function NavBar() {
   const router = useRouter();
   const [active, setActive] = useState(false);
-  const nav = ["ABOUT", "CARRER", "PROJECT", " GIT & BLOG"];
+  const nav = ["ABOUT", "PROJECT", "GIT", "BLOG"];
   const onClick = (route) => {
-    router.push(route.toLowerCase());
+    const externalLinks = {
+      GIT: "https://github.com/fks1311",
+      BLOG: "https://velog.io/@well_log/posts",
+    };
+
+    const url = externalLinks[route] || route.toLowerCase();
+    url.startsWith("http") ? window.open(url, "_blank") : router.push(url);
     setActive(!active);
   };
+
   const variants = {
     initial: {
       opacity: 0,
@@ -31,7 +38,14 @@ export default function NavBar() {
   return (
     <Layout>
       <Container>
-        <Logo onClick={() => router.push("/")}>KIMRANYOUNG</Logo>
+        <Logo
+          onClick={() => {
+            router.push("/");
+            setActive(false);
+          }}
+        >
+          KIMRANYOUNG
+        </Logo>
         <Hamburger
           onClick={() => {
             setActive(!active);
@@ -89,7 +103,7 @@ const Hamburger = styled.div`
 
 const NavLayout = styled(motion.div)`
   position: absolute;
-  height: 20rem;
+  height: 25rem;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -98,6 +112,7 @@ const NavLayout = styled(motion.div)`
   border: 1px solid white;
   border-radius: 10px;
   background-color: white;
+  z-index: 1;
   div:nth-child(n + 1):nth-child(-n + 3) {
     border-right: 1px solid #eeeeee;
   }
