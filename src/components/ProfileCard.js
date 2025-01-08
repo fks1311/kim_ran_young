@@ -1,9 +1,12 @@
 import Image from "next/image";
 import profile from "@/lib/image.jpeg";
+import me from "@/lib/me.jpg";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { usePathname } from "next/navigation";
 
 export default function ProfileCard() {
+  const pathname = usePathname();
   const variants = {
     initial: {
       opacity: 0,
@@ -18,7 +21,7 @@ export default function ProfileCard() {
       },
     },
     bounce: {
-      y: [0, -10, 0, -10, 0],
+      y: [0, -15, 0, -15, 0],
       transition: {
         duration: 10,
         repeat: Infinity,
@@ -29,12 +32,20 @@ export default function ProfileCard() {
   };
 
   return (
-    <Container variants={variants} initial="initial" animate="animate">
+    <Container variants={variants} initial="initial" animate="animate" pathname={pathname}>
       <motion.div variants={variants} initial="initial" animate={["animate", "bounce"]}>
-        <Image src={profile} alt="프로필 사진" style={{ width: "300px", height: "350px", borderRadius: "10px" }} />
+        <Image src={me} alt="프로필 사진" style={{ width: "300px", height: "350px", borderRadius: "10px" }} />
       </motion.div>
     </Container>
   );
 }
 
-const Container = styled(motion.div)``;
+const Container = styled(motion.div)`
+  position: ${({ pathname }) => (pathname.includes("about") ? `absolute` : `relative`)};
+  top: ${({ pathname }) => (pathname.includes("about") ? `30%` : `null`)};
+  left: ${({ pathname }) => (pathname.includes("about") ? `40%` : `null`)};
+`;
+
+// home => relative
+// about => absolute
+// about > About me => relative
