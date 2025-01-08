@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Container>
       <div>
-        <p>FRONTEND ENGINEER</p>
+        <p>FRONTEND DEVELOPER</p>
         <p>KIMRANYOUNG</p>
       </div>
       <ProfileCard />
@@ -24,7 +24,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
   div {
     display: flex;
     flex-direction: column;
