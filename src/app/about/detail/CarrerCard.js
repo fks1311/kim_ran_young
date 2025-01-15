@@ -3,7 +3,7 @@ import { BiRadioCircle } from "react-icons/bi";
 import { Fragment } from "react";
 import { motion } from "framer-motion";
 
-export default function TimeLineCard({ ref }) {
+export default function CarrerCard({ ref }) {
   const { company, period, brief, position, projects, tech, tasks } = ref;
 
   const containsObject = tasks.some((item) => typeof item === "object" && !Array.isArray(item));
@@ -17,33 +17,26 @@ export default function TimeLineCard({ ref }) {
               <Fragment key={idx}>
                 <li>{task.title}</li>
                 <UlContainer type={"circle"}>
-                  {task.detail.map((subtxt, subidx) => {
-                    if (typeof subtxt === "object") {
-                      return (
-                        <li key={subidx}>
-                          -------{subtxt.subtitle}
-                          <UlContainer type={"disc"}>
-                            {subtxt.task_list !== undefined &&
-                              subtxt.task_list.map((list, ldx) => {
-                                if (typeof list === "object") {
-                                  return (
-                                    <li key={ldx}>
-                                      {list}
-                                      <UlContainer type={"square"}>
-                                        {list.map((data, dxd) => (
-                                          <li key={dxd}>{data}</li>
-                                        ))}
-                                      </UlContainer>
-                                    </li>
-                                  );
-                                }
-                                return <li key={ldx}>!!!{list}</li>;
-                              })}
-                          </UlContainer>
-                        </li>
-                      );
-                    }
-                    return <li key={subidx}>----{subtxt}</li>;
+                  {task.detail.map((detail, idx) => {
+                    return (
+                      <li key={idx}>
+                        {detail.subtitle}
+                        <UlContainer type={"square"}>
+                          {detail.task_list.map((list, idx) => {
+                            if (typeof list === "string") {
+                              return <li key={idx}>{list}</li>;
+                            }
+                            return (
+                              <UlContainer type={"disc"}>
+                                {list.map((data, idx) => (
+                                  <li>{data}</li>
+                                ))}
+                              </UlContainer>
+                            );
+                          })}
+                        </UlContainer>
+                      </li>
+                    );
                   })}
                 </UlContainer>
               </Fragment>
@@ -98,10 +91,12 @@ export default function TimeLineCard({ ref }) {
   );
 }
 
-const TimeFrame = styled(motio.div)`
+const TimeFrame = styled(motion.div)`
   display: flex;
   gap: 1rem;
   line-height: 2rem;
+  padding: 8rem 0px;
+  background-color: white;
 `;
 
 const SummaryFrame = styled.div`

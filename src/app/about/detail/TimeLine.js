@@ -1,9 +1,8 @@
 import { BiRadioCircle } from "react-icons/bi";
-import styled from "styled-components";
-import TimeLineCard from "./TimeLineCard";
-import carrer from "@/lib/carrer.json";
-import { Fragment } from "react";
 import { motion } from "framer-motion";
+import styled from "styled-components";
+import CarrerCard from "./CarrerCard";
+import carrer from "@/lib/carrer.json";
 
 export default function TimeLineFrame() {
   return (
@@ -12,13 +11,12 @@ export default function TimeLineFrame() {
         <BiRadioCircle />
         TIMELINE
       </SubTitle>
-      <BoderBottomLine />
       <TimeLine>
         {carrer.map((carrer, idx) => (
-          <Fragment key={idx}>
-            <TimeLineCard ref={carrer} />
+          <CardFrame key={idx}>
             <BoderBottomLine />
-          </Fragment>
+            <CarrerCard ref={carrer} />
+          </CardFrame>
         ))}
       </TimeLine>
     </TimeFrame>
@@ -40,8 +38,12 @@ const SubTitle = styled.div`
 const BoderBottomLine = styled.div`
   border: 1px solid #f5f7f8;
 `;
-const TimeLine = styled(motion.div)`
+const TimeLine = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+`;
+const CardFrame = styled(motion.div)`
+  position: sticky;
+  top: 10px;
 `;
