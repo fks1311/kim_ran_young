@@ -16,20 +16,20 @@ export default function CarrerCard({ ref }) {
             return (
               <Fragment key={idx}>
                 <li>{task.title}</li>
-                <UlContainer type={"circle"}>
+                <UlContainer type={"circle"} key={idx}>
                   {task.detail.map((detail, idx) => {
                     return (
                       <li key={idx}>
                         {detail.subtitle}
-                        <UlContainer type={"square"}>
+                        <UlContainer type={"square"} key={idx}>
                           {detail.task_list.map((list, idx) => {
                             if (typeof list === "string") {
                               return <li key={idx}>{list}</li>;
                             }
                             return (
-                              <UlContainer type={"disc"}>
+                              <UlContainer type={"disc"} key={idx}>
                                 {list.map((data, idx) => (
-                                  <li>{data}</li>
+                                  <li key={idx}>{data}</li>
                                 ))}
                               </UlContainer>
                             );

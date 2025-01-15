@@ -9,7 +9,7 @@ import styled from "styled-components";
 export default function NavBar() {
   const router = useRouter();
   const [active, setActive] = useState(false);
-  const nav = ["ABOUT", "PROJECT", "GIT", "BLOG"];
+  const nav = ["ABOUT", "PROJECT", "GIT", "BLOG", "CONTACT"];
   const onClick = (route) => {
     const externalLinks = {
       GIT: "https://github.com/fks1311",
@@ -106,7 +106,7 @@ const NavLayout = styled(motion.div)`
   height: 25rem;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   padding: 1rem;
   margin-top: 5rem;
   border: 1px solid white;
