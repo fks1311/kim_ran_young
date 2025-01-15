@@ -10,10 +10,10 @@ export default function About() {
     <div className="about-layout">
       <Slide />
       <ContentContainer>
-        <Frame>
+        <IconFrame>
           <img src="https://cdn.prod.website-files.com/63d056ea7d536409ca9ada63/63d056ea7d53645c5e9ada93_Pre-order_curve.svg" />
           <MdOutlineKeyboardDoubleArrowDown size={30} />
-        </Frame>
+        </IconFrame>
         <ProfileContent />
       </ContentContainer>
       <style jsx>{`
@@ -32,7 +32,7 @@ const ContentContainer = styled.div`
   justify-content: center;
 `;
 
-const Frame = styled.div`
+const IconFrame = styled.div`
   position: absolute;
   top: -50px;
   display: flex;

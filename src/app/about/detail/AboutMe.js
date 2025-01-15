@@ -62,7 +62,6 @@ export default function AboutMeFrame() {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
             border-radius: 10px;
             background-color: black;
           }

@@ -1,0 +1,170 @@
+import styled from "styled-components";
+import { BiRadioCircle } from "react-icons/bi";
+import { Fragment } from "react";
+import { motion } from "framer-motion";
+
+export default function TimeLineCard({ ref }) {
+  const { company, period, brief, position, projects, tech, tasks } = ref;
+
+  const containsObject = tasks.some((item) => typeof item === "object" && !Array.isArray(item));
+
+  const TaskList = (tasks) => {
+    return (
+      <UlContainer type={"disc"}>
+        {tasks.map((task, idx) => {
+          if (typeof task === "object") {
+            return (
+              <Fragment key={idx}>
+                <li>{task.title}</li>
+                <UlContainer type={"circle"}>
+                  {task.detail.map((subtxt, subidx) => {
+                    if (typeof subtxt === "object") {
+                      return (
+                        <li key={subidx}>
+                          -------{subtxt.subtitle}
+                          <UlContainer type={"disc"}>
+                            {subtxt.task_list !== undefined &&
+                              subtxt.task_list.map((list, ldx) => {
+                                if (typeof list === "object") {
+                                  return (
+                                    <li key={ldx}>
+                                      {list}
+                                      <UlContainer type={"square"}>
+                                        {list.map((data, dxd) => (
+                                          <li key={dxd}>{data}</li>
+                                        ))}
+                                      </UlContainer>
+                                    </li>
+                                  );
+                                }
+                                return <li key={ldx}>!!!{list}</li>;
+                              })}
+                          </UlContainer>
+                        </li>
+                      );
+                    }
+                    return <li key={subidx}>----{subtxt}</li>;
+                  })}
+                </UlContainer>
+              </Fragment>
+            );
+          }
+          return <li key={idx}>{task}</li>;
+        })}
+      </UlContainer>
+    );
+  };
+
+  return (
+    <TimeFrame>
+      <SummaryFrame>
+        <PeriodContainer>
+          <BiRadioCircle />
+          {period}
+        </PeriodContainer>
+        <CompanyContainer>
+          <p>{company}</p>
+          <p>{position}</p>
+        </CompanyContainer>
+      </SummaryFrame>
+      <CarrerFrame>
+        <TopFrame>
+          <p>{brief}</p>
+        </TopFrame>
+        <MiddleFrame>
+          <>{projects.length !== 0 && "projects"}</>
+          <span>
+            {projects.length !== 0 &&
+              projects.map((project, idx) => (
+                <span key={idx}>
+                  {project}
+                  {idx !== projects.length - 1 ? <>,&nbsp;</> : ""}
+                </span>
+              ))}
+          </span>
+          <>{tech.length !== 0 && "tech"}</>
+          <div className="tech-list">
+            {tech.map((data, idx) => (
+              <span key={idx}>
+                {data}
+                {idx !== tech.length - 1 ? <>,&nbsp;</> : " 등"}
+              </span>
+            ))}
+          </div>
+        </MiddleFrame>
+        <BottomFrame>{TaskList(tasks)}</BottomFrame>
+      </CarrerFrame>
+    </TimeFrame>
+  );
+}
+
+const TimeFrame = styled(motio.div)`
+  display: flex;
+  gap: 1rem;
+  line-height: 2rem;
+`;
+
+const SummaryFrame = styled.div`
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 1rem;
+`;
+const PeriodContainer = styled.div``;
+const CompanyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  p:nth-child(1) {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  p:nth-child(2) {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    font-style: italic;
+    color: #0b0c0f;
+    letter-spacing: 0.1rem;
+  }
+`;
+
+const CarrerFrame = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #3d3d3d;
+  letter-spacing: 0.1rem;
+  min-height: 10vh;
+  margin-top: 4.5rem;
+`;
+const TopFrame = styled.div``;
+const MiddleFrame = styled.div`
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1rem;
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    word-break: normal;
+    white-space: normal;
+  }
+`;
+const BottomFrame = styled(motion.div)`
+  margin-top: 1.5rem;
+`;
+const UlContainer = styled.ul`
+  list-style-type: ${({ type }) => type};
+  padding-inline-start: 1em;
+  li {
+    line-height: 3rem;
+  }
+`;

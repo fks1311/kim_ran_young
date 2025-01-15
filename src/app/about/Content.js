@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import AboutMeFrame from "./detail/AboutMe";
 import UsableSkillFrame from "./detail/UsableSkills";
+import TimeLineFrame from "./detail/TimeLine";
 
 export default function ProfileContent() {
   return (
     <ContentLayout>
-      <h2>Thank you for visiting my portfolio.</h2>
+      <h2 className="welcome">Thank you for visiting my portfolio.</h2>
       <HeaderFrame>
         <h1>MY STORY</h1>
         <div className="border-bottom-line" />
@@ -13,6 +14,7 @@ export default function ProfileContent() {
       </HeaderFrame>
       <AboutMeFrame />
       <UsableSkillFrame />
+      <TimeLineFrame />
     </ContentLayout>
   );
 }
@@ -25,7 +27,7 @@ const ContentLayout = styled.div`
   padding: 3rem;
   border-radius: 10px;
   background-color: white;
-  h2 {
+  .welcome {
     font-size: 3rem;
     font-weight: lighter;
     margin-top: 10rem;
@@ -33,25 +35,24 @@ const ContentLayout = styled.div`
 `;
 
 const HeaderFrame = styled.div`
+  width: 100%;
+  margin-top: 10rem;
   h1 {
-    font-size: 10rem;
+    font-size: 15rem;
     font-weight: 900;
     font-family: Freesentation-9Black;
     letter-spacing: 1.5rem;
+    text-align: center;
   }
   .border-bottom-line {
     border: 1px solid #f5f7f8;
     position: relative;
-    top: -3rem;
-    right: 50%;
-    width: 200%;
+    top: -4.5rem;
   }
   .border-bottom-white {
-    border: 5px solid #fff;
+    border: 10px solid #fff;
     position: relative;
-    top: -3rem;
-    right: 50%;
-    width: 200%;
+    top: -4.5rem;
   }
 `;
 

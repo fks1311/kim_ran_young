@@ -25,3 +25,11 @@ export const theme = {
   breakpoints,
   color,
 };
+
+// --outline-dark: #2e313a;
+//     --outline-light: #e7eeee;
+//     --background-dark: #0b0c0f;
+//     --outline-dark-2: #c3dde0;
+//     --background-light: #e9f2f5;
+//     --background-grey-light: #f1f5f6;
+//     --light-outline: #ffffff12;
