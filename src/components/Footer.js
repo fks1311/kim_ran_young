@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 
 export default function Footer() {
   const router = useRouter();
-  const nav = ["HOME", "ABOUT", "PROJECT", "GIT", "BLOG"];
+  const nav = ["HOME", "ABOUT", "PROJECT", "GIT", "BLOG", "CONTACT"];
   const onClick = (route) => {
     const externalLinks = {
       GIT: "https://github.com/fks1311",
