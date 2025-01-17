@@ -1,13 +1,16 @@
 "use client";
 
-import GlobalStyles from "@/lib/GlobalStyles";
 import StyledComponentsRegistry from "../lib/registry";
 import { ThemeProvider } from "styled-components";
 import { theme } from "@/lib/theme";
+import GlobalStyles from "@/lib/GlobalStyles";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }) {
+  const router = usePathname();
+
   return (
     <html>
       <body>
@@ -15,7 +18,7 @@ export default function RootLayout({ children }) {
           <GlobalStyles />
           <ThemeProvider theme={theme}>
             <NavBar />
-            <div style={{ marginTop: "5rem" }}>{children}</div>
+            <div key={router}>{children}</div>
             <Footer />
           </ThemeProvider>
         </StyledComponentsRegistry>
