@@ -1,3 +1,96 @@
+"use client";
+
+import styled from "styled-components";
+import Slide from "./Slide";
+import Image from "next/image";
+import blank from "@/lib/blankImg.svg";
+import { motion } from "framer-motion";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { useState } from "react";
+
 export default function Project() {
-  return <h3>Project</h3>;
+  const [hover, setHover] = useState(false);
+  const projects = [
+    { thumbnails: "", subject: "Portfolio" },
+    { thumbnails: "", subject: "Day6 Fan Ground" },
+    { thumbnails: "", subject: "MovieZip" },
+  ];
+
+  return (
+    <div className="layout">
+      <Slide />
+      <ProjectFrame>
+        <p className="header">ALL PROJECTS</p>
+        <ProjectContainer>
+          {projects.map((project, idx) => (
+            <ProjectCard key={idx} onMouseOver={() => setHover(idx)} onMouseOut={() => setHover(undefined)}>
+              <Image src={blank} height={300} alt="프로젝트" />
+              <Subject idx={idx} hover={hover}>
+                {hover === idx ? "lean more" : project.subject}
+                <MdKeyboardArrowRight />
+              </Subject>
+            </ProjectCard>
+          ))}
+        </ProjectContainer>
+      </ProjectFrame>
+      <style jsx>{`
+        .layout {
+          position: relative;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+        }
+      `}</style>
+    </div>
+  );
 }
+
+const ProjectFrame = styled.div`
+  position: absolute;
+  height: 85vh;
+  width: 40vw;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+  .header {
+    height: 70px;
+    line-height: 70px;
+    padding-left: 3rem;
+    letter-spacing: 0.3rem;
+    border-bottom: 1px solid #f5f7f8;
+  }
+`;
+
+const ProjectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem;
+  height: calc(85vh - 70px);
+  overflow-y: scroll;
+  box-sizing: border-box;
+`;
+const ProjectCard = styled(motion.div)`
+  position: relative;
+  img {
+    object-fit: cover;
+    border-radius: 10px;
+    width: 100%;
+  }
+`;
+const Subject = styled(motion.div)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: ${({ idx, hover }) => (idx === hover ? "1rem" : "0px")};
+  width: 100%;
+  height: 30px;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  transform: ${({ idx, hover }) => (idx === hover ? "scale(0.9)" : "scale(1)")};
+  transition: transform 0.3s ease;
+  background-color: ${({ idx, hover }) => idx === hover && "white"};
+`;
