@@ -24,9 +24,10 @@ const SlideAni = keyframes`
   }
 `;
 const SlideText = styled.div`
-  height: 90vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   white-space: nowrap;
   box-sizing: border-box;
   overflow: hidden;

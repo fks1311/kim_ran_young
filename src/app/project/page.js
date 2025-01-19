@@ -3,18 +3,15 @@
 import styled from "styled-components";
 import Slide from "./Slide";
 import Image from "next/image";
-import blank from "@/lib/blankImg.svg";
 import { motion } from "framer-motion";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import projectJson from "@/lib/project";
 
 export default function Project() {
+  const router = useRouter();
   const [hover, setHover] = useState(false);
-  const projects = [
-    { thumbnails: "", subject: "Portfolio" },
-    { thumbnails: "", subject: "Day6 Fan Ground" },
-    { thumbnails: "", subject: "MovieZip" },
-  ];
 
   return (
     <div className="layout">
@@ -22,9 +19,14 @@ export default function Project() {
       <ProjectFrame>
         <p className="header">ALL PROJECTS</p>
         <ProjectContainer>
-          {projects.map((project, idx) => (
-            <ProjectCard key={idx} onMouseOver={() => setHover(idx)} onMouseOut={() => setHover(undefined)}>
-              <Image src={blank} height={300} alt="프로젝트" />
+          {projectJson().map((project, idx) => (
+            <ProjectCard
+              key={idx}
+              onClick={() => router.push(`/project/${project.subject}`)}
+              onMouseOver={() => setHover(idx)}
+              onMouseOut={() => setHover(undefined)}
+            >
+              <Image src={project.thumbnails} height={300} alt="프로젝트" />
               <Subject idx={idx} hover={hover}>
                 {hover === idx ? "lean more" : project.subject}
                 <MdKeyboardArrowRight />
@@ -47,7 +49,7 @@ export default function Project() {
 
 const ProjectFrame = styled.div`
   position: absolute;
-  height: 85vh;
+  height: 75vh;
   width: 40vw;
   border-radius: 10px;
   background-color: white;
@@ -66,12 +68,13 @@ const ProjectContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
   padding: 3rem;
-  height: calc(85vh - 70px);
+  height: calc(75vh - 70px);
   overflow-y: scroll;
   box-sizing: border-box;
 `;
 const ProjectCard = styled(motion.div)`
   position: relative;
+  color: black;
   img {
     object-fit: cover;
     border-radius: 10px;
