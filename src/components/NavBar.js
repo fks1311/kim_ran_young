@@ -17,7 +17,7 @@ export default function NavBar() {
     };
 
     const url = externalLinks[route] || route.toLowerCase();
-    url.startsWith("http") ? window.open(url, "_blank") : router.push(url);
+    url.startsWith("http") ? window.open(url, "_blank") : router.push(`/${url}`);
     setActive(!active);
   };
 

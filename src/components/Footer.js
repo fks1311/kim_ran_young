@@ -10,7 +10,7 @@ export default function Footer() {
     };
 
     const url = externalLinks[route] || route.toLowerCase();
-    url.startsWith("http") ? window.open(url, "_blank") : route === "HOME" ? router.push("/") : router.push(url);
+    url.startsWith("http") ? window.open(url, "_blank") : route === "HOME" ? router.push("/") : router.push(`/${url}`);
   };
 
   return (
