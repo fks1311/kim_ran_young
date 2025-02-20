@@ -1,4 +1,5 @@
 import blank from "@/lib/blankImg.svg";
+import portfolio_main from "@/assets/portfolio/portfolio-main.png";
 
 /**
  * subject
@@ -11,12 +12,12 @@ import blank from "@/lib/blankImg.svg";
 export default function projectJson() {
   return [
     {
-      thumbnails: blank,
+      thumbnails: portfolio_main,
       subject: "Portfolio",
       project_detail:
         "현재 보고 계신 포트폴리오이며, Next.js 프레임워크를 사용했습니다. 현재 이 포트폴리오는 app router 방식으로 설계되어 있으며, styled-components와 framer-motion의 라이브러리를 활용하였습니다.",
       use_tech: "Next.js, styled-components, framer-motion",
-      project_images: [blank, blank, blank, blank, blank],
+      project_images: [portfolio_main, portfolio_main, portfolio_main, portfolio_main, portfolio_main],
     },
     {
       thumbnails: blank,

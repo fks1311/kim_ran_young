@@ -1,5 +1,4 @@
 import Image from "next/image";
-import profile from "@/lib/image.jpeg";
 import me from "@/lib/me.jpg";
 import { motion } from "framer-motion";
 import styled from "styled-components";

@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import projectJson from "@/lib/project";
 import decodedHTML from "@/lib/decodedHTML";
@@ -12,22 +12,12 @@ export default function DetailPage() {
   const params = useParams();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true); // 다른 방법
+
   useEffect(() => {
     const filter = projectJson().filter((f) => f.subject === decodedHTML(params.page));
     setProjects(filter);
     setLoading(false);
-  }, []);
-
-  // const { scrollY } = useScroll();
-  // const x = useTransform();
-  // const [y, setY] = useState(0);
-  // const emptyArrays = Array.from({ length: 5 }, () => []);
-  // const array = Array.from(Array(5), () => []);
-
-  // useMotionValueEvent(scrollY, "change", (latest) => {
-  //   console.log("x changed to", latest);
-  //   setY(latest);
-  // });
+  }, [params.page]);
 
   return (
     <div className="layout">
@@ -99,11 +89,12 @@ const Frame = styled(motion.div)`
   gap: 1rem;
   overflow: hidden;
   overflow-x: scroll;
-  width: 100%;
   border-radius: 10px;
   img {
     height: 70vh;
     border-radius: 10px;
+    border: 1px solid white;
+    margin: 1rem;
   }
 `;
 const ViewLive = styled.div`
@@ -112,3 +103,18 @@ const ViewLive = styled.div`
   letter-spacing: 0.3rem;
   border-bottom: 1px solid white;
 `;
+
+// const useScrollSync = (frameRef) => {
+//   const { scrollYProgress } = useScroll();
+
+//   // 세로 스크롤에 맞춰 가로 스크롤을 변환합니다.
+//   const x = useTransform(scrollYProgress, [0, 1], [0, frameRef.current?.scrollWidth || 0]);
+
+//   useEffect(() => {
+//     if (frameRef.current) {
+//       frameRef.current.scrollLeft = 0; // 초기값으로 왼쪽으로 설정
+//     }
+//   }, [frameRef]);
+
+//   return x;
+// };

@@ -12,7 +12,7 @@ export default function Slide() {
         ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME
         ABOUT ME ABOUT ME ABOUT ME ABOUT ME
       </h1>
-      <ProfileCard />
+      {/* <ProfileCard /> */}
     </SlideText>
   );
 }
@@ -32,6 +32,7 @@ const SlideText = styled.div`
   white-space: nowrap;
   box-sizing: border-box;
   overflow: hidden;
+  margin-top: 5rem;
   h1 {
     color: white;
     font-size: 23rem;

@@ -2,7 +2,7 @@
 
 import Slide from "./Slide";
 import styled from "styled-components";
-import { animate, delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import me from "@/lib/me.jpg";
 

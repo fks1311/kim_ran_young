@@ -1,9 +1,6 @@
 import { BiRadioCircle } from "react-icons/bi";
 import Image from "next/image";
-import profile from "@/lib/image.jpeg";
 import me from "@/lib/me.jpg";
-
-// ABOUT ME 2문단!!!
 
 export default function AboutMeFrame() {
   return (
@@ -39,16 +36,26 @@ export default function AboutMeFrame() {
           </div>
         </div>
         <div className="brief-intro">
-          <p>
-            Janet was a creative freelancer based in New York City who specialized in app design and web design. She had
-            years of experience under her belt, and had the unique skillset needed to craft stunning websites that
-            captured each client's individual brand identity.
-          </p>
-          <p>
-            When it came to designing mobile or web-based applications, Janet had a deep understanding of UX principles,
-            such as interaction design, visual design, animation. She also had the ability to create custom user
-            interfaces and experiences tailored specifically to each client's needs.
-          </p>
+          <ul>
+            <li>안녕하세요, 김란영입니다.</li>
+            <li>
+              3년차 프론트엔드 개발자입니다.
+              <br />
+              시간의 흐름에 따른 연차 쌓기가 아닌, 능력에 의한 연차 쌓기를 원합니다.
+            </li>
+            <li>
+              코드의 정돈함을 좋아합니다.
+              <br />
+              단순 코드 길이 수 줄이기가 아닌, 이해하기 위한 리팩토링을 좋아합니다.
+            </li>
+            <li>
+              협업과 커뮤니케이션의 상관관계를 압니다.
+              <br />
+              하나의 최상의 결과를 만들기 위해 모인 만큼,
+              <br />
+              서로간의 업무에 대한 존중과 존중에서 나오는 대화의 중요성을 압니다.
+            </li>
+          </ul>
         </div>
       </div>
       <style jsx>{`
@@ -105,10 +112,18 @@ export default function AboutMeFrame() {
               display: flex;
               flex-direction: column;
               gap: 2rem;
-              font-size: 2rem;
+              font-size: 1.8rem;
               font-weight: lighter;
               max-width: 80%;
-              line-height: 3rem;
+              // line-height: 3rem;
+              ul {
+                list-style-type: square;
+                line-height: 4rem;
+                padding-left: 2.5rem;
+                li {
+                  // line-height: 4rem;
+                }
+              }
             }
           }
         }

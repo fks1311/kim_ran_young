@@ -26,7 +26,7 @@ export default function Project() {
               onMouseOver={() => setHover(idx)}
               onMouseOut={() => setHover(undefined)}
             >
-              <Image src={project.thumbnails} height={300} alt="프로젝트" />
+              <Image src={project.thumbnails} height={500} objectFit="contain" alt="프로젝트" />
               <Subject idx={idx} hover={hover}>
                 {hover === idx ? "lean more" : project.subject}
                 <MdKeyboardArrowRight />
@@ -76,9 +76,9 @@ const ProjectCard = styled(motion.div)`
   position: relative;
   color: black;
   img {
-    object-fit: cover;
-    border-radius: 10px;
+    // object-fit: cover;
     width: 100%;
+    border-radius: 10px;
   }
 `;
 const Subject = styled(motion.div)`
@@ -91,9 +91,11 @@ const Subject = styled(motion.div)`
   height: 30px;
   padding: 2.5rem;
   box-sizing: border-box;
+  color: white;
   font-size: 1.5rem;
   border-radius: 10px;
   transform: ${({ idx, hover }) => (idx === hover ? "scale(0.9)" : "scale(1)")};
   transition: transform 0.3s ease;
-  background-color: ${({ idx, hover }) => idx === hover && "white"};
+  background-color: #222831;
+  // background-color: ${({ idx, hover }) => idx === hover && "white"};
 `;
