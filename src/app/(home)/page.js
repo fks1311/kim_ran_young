@@ -3,6 +3,7 @@
 import ProfileCard from "@/components/ProfileCard";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import Metadata from "@/components/Metadata";
 
 export default function Home() {
   const text = ["F", "R", "O", "N", "T", "E", "N", "D", <>&nbsp;</>, "D", "E", "V", "E", "L", "O", "P", "E", "R"];
@@ -31,6 +32,7 @@ export default function Home() {
 
   return (
     <Container>
+      <Metadata title={"HOME"} />
       <div className="header-container">
         <div className="txt-container">
           {text.map((txt, idx) => (

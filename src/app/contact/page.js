@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import me from "@/lib/me.jpg";
+import Metadata from "@/components/Metadata";
 
 export default function Contact() {
   const arrayTxt = [
@@ -51,6 +52,7 @@ export default function Contact() {
   return (
     <Layout>
       <Slide />
+      <Metadata title={"CONTACT"} />
       <Frame>
         <HeadContainer>
           {arrayTxt.map((txt, idx) => (

@@ -8,6 +8,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import projectJson from "@/lib/project";
+import Metadata from "@/components/Metadata";
 
 export default function Project() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function Project() {
 
   return (
     <div className="layout">
+      <Metadata title={"PROJECTS"} />
       <Slide />
       <ProjectFrame>
         <p className="header">ALL PROJECTS</p>
