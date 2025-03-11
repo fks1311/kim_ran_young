@@ -2,22 +2,29 @@
 
 import styled from "styled-components";
 import Image from "next/image";
-import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { Fragment, useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import projectJson from "@/lib/project";
 import decodedHTML from "@/lib/decodedHTML";
+import Metadata from "@/components/Metadata";
 
 export default function DetailPage() {
   const params = useParams();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true); // 다른 방법
+  const router = useRouter();
 
   useEffect(() => {
     const filter = projectJson().filter((f) => f.subject === decodedHTML(params.page));
     setProjects(filter);
     setLoading(false);
   }, [params.page]);
+
+  const onClick = (subject, link) => {
+    console.log(subject);
+    subject === "Portfolio" ? router.push(link) : window.open(link, "_blank");
+  };
 
   return (
     <div className="layout">
@@ -27,6 +34,7 @@ export default function DetailPage() {
         <>
           {projects.map((project, i) => (
             <Fragment key={i}>
+              <Metadata title={project.subject} />
               <Project>
                 <div>
                   <p className="subject">project</p>
@@ -40,7 +48,7 @@ export default function DetailPage() {
                   <p className="subject">use tech</p>
                   <p>{project.use_tech}</p>
                 </div>
-                <ViewLive>VIEW LIVE PROJECT</ViewLive>
+                <ViewLive onClick={() => onClick(project.subject, project.link)}>VIEW LIVE PROJECT</ViewLive>
               </Project>
               <Frame>
                 {project.project_images.map((img, idx) => (
@@ -102,19 +110,5 @@ const ViewLive = styled.div`
   line-height: 5rem;
   letter-spacing: 0.3rem;
   border-bottom: 1px solid white;
+  cursor: pointer;
 `;
-
-// const useScrollSync = (frameRef) => {
-//   const { scrollYProgress } = useScroll();
-
-//   // 세로 스크롤에 맞춰 가로 스크롤을 변환합니다.
-//   const x = useTransform(scrollYProgress, [0, 1], [0, frameRef.current?.scrollWidth || 0]);
-
-//   useEffect(() => {
-//     if (frameRef.current) {
-//       frameRef.current.scrollLeft = 0; // 초기값으로 왼쪽으로 설정
-//     }
-//   }, [frameRef]);
-
-//   return x;
-// };
