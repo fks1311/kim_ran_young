@@ -1,9 +1,12 @@
 "use client";
 
 import ProfileCard from "@/components/ProfileCard";
+import { useRouter } from "next/navigation";
 import styled, { keyframes } from "styled-components";
 
 export default function Slide() {
+  const router = useRouter();
+
   return (
     <SlideText>
       <h1>
@@ -12,7 +15,11 @@ export default function Slide() {
         ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME ABOUT ME
         ABOUT ME ABOUT ME ABOUT ME ABOUT ME
       </h1>
-      {/* <ProfileCard /> */}
+      <ViewProject>
+        Go to the project right away.
+        <button onClick={() => router.push("/project")}>VIEW MY PROJECTS</button>
+      </ViewProject>
+      <ProfileCard />
     </SlideText>
   );
 }
@@ -28,16 +35,38 @@ const SlideAni = keyframes`
 const SlideText = styled.div`
   height: 80vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   white-space: nowrap;
   box-sizing: border-box;
   overflow: hidden;
   margin-top: 5rem;
   h1 {
+    flex: 0.7;
+    display: flex;
+    align-items: flex-end;
     color: white;
-    font-size: 23rem;
+    font-size: 35rem;
     font-weight: bold;
     animation: ${SlideAni} 250s linear infinite;
+  }
+`;
+const ViewProject = styled.div`
+  flex: 0.3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 2rem;
+  gap: 2rem;
+  button {
+    width: 15%;
+    padding: 1rem;
+    color: white;
+    border: 1px solid white;
+    border-radius: 2rem;
+    background-color: transparent;
+    cursor: pointer;
   }
 `;
 

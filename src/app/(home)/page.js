@@ -1,9 +1,9 @@
 "use client";
 
 import ProfileCard from "@/components/ProfileCard";
+import Metadata from "@/components/Metadata";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import Metadata from "@/components/Metadata";
 
 export default function Home() {
   const text = ["F", "R", "O", "N", "T", "E", "N", "D", <>&nbsp;</>, "D", "E", "V", "E", "L", "O", "P", "E", "R"];
@@ -42,7 +42,7 @@ export default function Home() {
           ))}
         </div>
         <motion.p variants={name_variants} initial="init" animate="animate">
-          KIMRANYOUNG
+          {`< KIMRANYOUNG />`}
         </motion.p>
       </div>
       {/* <ProfileCard /> */}
