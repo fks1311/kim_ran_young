@@ -11,7 +11,7 @@ const deviceSizes = {
   desktop: `1024px`,
 };
 
-const breakpoints = {
+const media = {
   small: `screen and (max-width: ${deviceSizes.mobile})`, // 최대 768 이하
   middle: `screen and (max-width: ${deviceSizes.tablet})`, // 최대 1023 이하
   large: `screen and (min-width:${deviceSizes.desktop})`, // 최소 1024 이상
@@ -22,14 +22,6 @@ const color = {
 };
 
 export const theme = {
-  breakpoints,
+  media,
   color,
 };
-
-// --outline-dark: #2e313a;
-//     --outline-light: #e7eeee;
-//     --background-dark: #0b0c0f;
-//     --outline-dark-2: #c3dde0;
-//     --background-light: #e9f2f5;
-//     --background-grey-light: #f1f5f6;
-//     --light-outline: #ffffff12;
