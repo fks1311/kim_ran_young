@@ -1,12 +1,12 @@
 "use client";
 
-import StyledComponentsRegistry from "../lib/registry";
+import { usePathname } from "next/navigation";
 import { ThemeProvider } from "styled-components";
-import { theme } from "@/lib/theme";
-import GlobalStyles from "@/lib/GlobalStyles";
+import StyledComponentsRegistry from "@/style/registry";
+import GlobalStyles from "@/style/GlobalStyles";
+import { theme } from "@/style/theme";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }) {
   const router = usePathname();
