@@ -28,7 +28,7 @@ export default function Project() {
               onMouseOver={() => setHover(idx)}
               onMouseOut={() => setHover(undefined)}
             >
-              <Image src={project.thumbnails} height={500} objectFit="contain" alt="프로젝트" />
+              <Image src={project.thumbnails} height={500} unoptimized={true} alt="프로젝트" />
               <Subject idx={idx} hover={hover}>
                 {hover === idx ? "lean more" : project.subject}
                 <MdKeyboardArrowRight />
@@ -63,6 +63,13 @@ const ProjectFrame = styled.div`
     letter-spacing: 0.3rem;
     border-bottom: 1px solid #f5f7f8;
   }
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    width: 50vw;
+  }
 `;
 
 const ProjectContainer = styled.div`
@@ -82,6 +89,15 @@ const ProjectCard = styled(motion.div)`
     width: 100%;
     border-radius: 10px;
   }
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    img {
+      height: 40vh;
+    }
+  }
 `;
 const Subject = styled(motion.div)`
   display: flex;
@@ -100,4 +116,10 @@ const Subject = styled(motion.div)`
   transition: transform 0.3s ease;
   background-color: #222831;
   // background-color: ${({ idx, hover }) => idx === hover && "white"};
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+  }
 `;

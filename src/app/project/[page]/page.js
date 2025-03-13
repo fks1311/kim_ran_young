@@ -60,7 +60,7 @@ export default function DetailPage() {
   };
 
   return (
-    <div className="layout">
+    <Layout>
       {loading ? (
         <></>
       ) : (
@@ -107,27 +107,39 @@ export default function DetailPage() {
               </Project>
               <Frame>
                 {project.project_images.map((img, idx) => (
-                  <Image key={idx} src={img} alt={`프로젝트 이미지 ${idx}`} />
+                  <Image key={idx} src={img} unoptimized={true} alt={`프로젝트 이미지 ${idx}`} />
                 ))}
               </Frame>
             </Fragment>
           ))}
         </>
       )}
-      <style jsx>{`
-        .layout {
-          display: flex;
-          align-items: center;
-          gap: 3rem;
-          height: 75vh;
-          margin-top: 5rem;
-          color: white;
-        }
-      `}</style>
-    </div>
+    </Layout>
   );
 }
 
+const Layout = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+
+  margin-top: 5rem;
+  color: white;
+  @media ${({
+      theme: {
+        media: { large },
+      },
+    }) => large} {
+    height: 75vh;
+  }
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    flex-direction: column;
+  }
+`;
 const Project = styled.div`
   flex: 0.6;
   font-size: 1.5rem;
@@ -150,8 +162,6 @@ const Frame = styled(motion.div)`
   flex: 1;
   display: flex;
   gap: 1rem;
-  overflow: hidden;
-  overflow-x: scroll;
   border-radius: 10px;
   img {
     height: 70vh;
@@ -159,6 +169,25 @@ const Frame = styled(motion.div)`
     border-radius: 10px;
     border: 1px solid white;
     margin: 1rem;
+  }
+  @media ${({
+      theme: {
+        media: { large },
+      },
+    }) => large} {
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    flex-direction: column;
+    img {
+      height: 60vh;
+      width: 100%;
+    }
   }
 `;
 const ViewLive = styled(motion.div)`
