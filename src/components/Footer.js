@@ -41,10 +41,16 @@ export default function Footer() {
           font-size: 1.3rem;
           border-top: 1px solid #2e313a;
           cursor: pointer;
+          @media (max-width: 768px) {
+            align-items: flex-end;
+          }
         }
         .nav {
           display: flex;
           gap: 5rem;
+          @media (max-width: 768px) {
+            flex-direction: column;
+          }
         }
       `}</style>
     </footer>

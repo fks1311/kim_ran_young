@@ -82,6 +82,12 @@ const Container = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+  }
 `;
 const Logo = styled.div`
   color: white;
@@ -116,6 +122,19 @@ const NavLayout = styled(motion.div)`
   div:nth-child(n + 1):nth-child(-n + 3) {
     border-right: 1px solid #eeeeee;
   }
+  @media ${({
+      theme: {
+        media: { small },
+      },
+    }) => small} {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0rem;
+    font-size: 1.5rem;
+    div:nth-child(n + 1):nth-child(-n + 3) {
+      border-right: none;
+    }
+  }
 `;
 const Items = styled.div`
   height: 100%;
@@ -123,4 +142,15 @@ const Items = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   padding: 0px 1rem;
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    align-items: center;
+    border-bottom: 1px solid #eeeeee;
+    &:last-child {
+      border-bottom: 1px solid white;
+    }
+  }
 `;

@@ -71,4 +71,11 @@ const Container = styled.div`
   p:nth-child(2) {
     letter-spacing: 1rem;
   }
+  @media ${({
+      theme: {
+        media: { small },
+      },
+    }) => small} {
+    font-size: 5.5vw;
+  }
 `;
