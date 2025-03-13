@@ -106,6 +106,13 @@ const SummaryFrame = styled.div`
   align-items: flex-end;
   gap: 1rem;
   padding: 1rem;
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    flex: 0.3;
+  }
 `;
 const PeriodContainer = styled.div``;
 const CompanyContainer = styled.div`

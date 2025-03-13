@@ -41,10 +41,13 @@ export default function ProfileCard() {
 
 const Container = styled(motion.div)`
   position: ${({ pathname }) => (pathname.includes("about") ? `absolute` : `relative`)};
-  top: ${({ pathname }) => (pathname.includes("about") ? `20%` : `null`)};
+  top: ${({ pathname }) => (pathname.includes("about") ? `25%` : `null`)};
   left: ${({ pathname }) => (pathname.includes("about") ? `70%` : `null`)};
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    left: ${({ pathname }) => (pathname.includes("about") ? `50%` : `null`)};
+  }
 `;
-
-// home => relative
-// about => absolute
-// about > About me => relative

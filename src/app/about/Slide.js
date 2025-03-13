@@ -60,7 +60,8 @@ const ViewProject = styled.div`
   font-size: 2rem;
   gap: 2rem;
   button {
-    width: 15%;
+    // width: 15%;
+    width: 250px;
     padding: 1rem;
     color: white;
     border: 1px solid white;

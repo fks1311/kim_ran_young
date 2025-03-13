@@ -3,7 +3,7 @@
 import Slide from "./Slide";
 import styled from "styled-components";
 import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
-import ProfileContent from "./Content";
+import ProfileContent from "./ProfileContent";
 import Metadata from "@/components/Metadata";
 
 export default function About() {

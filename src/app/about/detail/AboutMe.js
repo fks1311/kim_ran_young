@@ -1,10 +1,11 @@
 import { BiRadioCircle } from "react-icons/bi";
 import Image from "next/image";
 import me from "@/lib/me.jpg";
+import styled from "styled-components";
 
 export default function AboutMeFrame() {
   return (
-    <div className="AboutFrame">
+    <AboutFrame>
       <div className="profile">
         <Image
           src={me}
@@ -58,76 +59,98 @@ export default function AboutMeFrame() {
           </ul>
         </div>
       </div>
-      <style jsx>{`
-        .AboutFrame {
-          display: flex;
-          gap: 2rem;
-          width: 100%;
-
-          .profile {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            background-color: black;
-          }
-          .about {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 5rem;
-            padding: 2rem;
-
-            .sub-title {
-              font-size: 1.5rem;
-            }
-
-            .intro {
-              display: flex;
-              flex-direction: column;
-              gap: 2rem;
-              .name {
-                font-size: 7rem;
-                font-weight: lighter;
-                span {
-                  font-size: 1.3rem;
-                  margin-left: 1rem;
-                }
-              }
-              .brief-info {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1rem;
-                max-width: 80%;
-                font-size: 1.5rem;
-                padding: 1rem;
-                span:nth-child(6) {
-                  margin-right: 1rem;
-                }
-              }
-            }
-
-            .brief-intro {
-              display: flex;
-              flex-direction: column;
-              gap: 2rem;
-              font-size: 1.8rem;
-              font-weight: lighter;
-              max-width: 80%;
-              // line-height: 3rem;
-              ul {
-                list-style-type: square;
-                line-height: 4rem;
-                padding-left: 2.5rem;
-                li {
-                  // line-height: 4rem;
-                }
-              }
-            }
-          }
-        }
-      `}</style>
-    </div>
+    </AboutFrame>
   );
 }
+
+const AboutFrame = styled.div`
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  .profile {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: black;
+  }
+  .about {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding: 2rem;
+
+    .sub-title {
+      font-size: 1.5rem;
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      .name {
+        font-size: 7rem;
+        font-weight: lighter;
+        span {
+          font-size: 1.3rem;
+          margin-left: 1rem;
+        }
+      }
+      .brief-info {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        max-width: 80%;
+        font-size: 1.5rem;
+        padding: 1rem;
+        span:nth-child(6) {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .brief-intro {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      font-size: 1.8rem;
+      font-weight: lighter;
+      max-width: 80%;
+      // line-height: 3rem;
+      ul {
+        list-style-type: square;
+        line-height: 4rem;
+        padding-left: 2.5rem;
+        li {
+          // line-height: 4rem;
+        }
+      }
+    }
+  }
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    display: flex;
+    flex-direction: column;
+    .profile {
+      height: 20vh;
+      img {
+        height: 40vh;
+        padding: 5rem 0px;
+      }
+    }
+    .about {
+      .intro {
+        .brief-info {
+          span:nth-child(6) {
+            margin-right: 5rem;
+          }
+        }
+      }
+    }
+  }
+`;

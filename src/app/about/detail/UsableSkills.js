@@ -95,6 +95,13 @@ const SkillContent = styled.div`
       height: 8rem;
     }
   }
+  @media ${({
+      theme: {
+        media: { middle },
+      },
+    }) => middle} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Rense = styled(motion.div)``;
