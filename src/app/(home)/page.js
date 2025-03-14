@@ -73,9 +73,16 @@ const Container = styled.div`
   }
   @media ${({
       theme: {
-        media: { small },
+        media: { laptop },
       },
-    }) => small} {
+    }) => laptop} {
     font-size: 5.5vw;
+  }
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
+    font-size: 5vw;
   }
 `;

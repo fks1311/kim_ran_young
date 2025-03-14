@@ -82,12 +82,6 @@ const Container = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media ${({
-      theme: {
-        media: { middle },
-      },
-    }) => middle} {
-  }
 `;
 const Logo = styled.div`
   color: white;
@@ -124,9 +118,9 @@ const NavLayout = styled(motion.div)`
   }
   @media ${({
       theme: {
-        media: { small },
+        media: { tablet },
       },
-    }) => small} {
+    }) => tablet} {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 2rem 0rem;
@@ -144,9 +138,9 @@ const Items = styled.div`
   padding: 0px 1rem;
   @media ${({
       theme: {
-        media: { middle },
+        media: { tablet },
       },
-    }) => middle} {
+    }) => tablet} {
     align-items: center;
     border-bottom: 1px solid #eeeeee;
     &:last-child {
