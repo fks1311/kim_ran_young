@@ -122,21 +122,20 @@ const Layout = styled.div`
   display: flex;
   align-items: center;
   gap: 3rem;
-
   margin-top: 5rem;
   color: white;
   @media ${({
       theme: {
-        media: { large },
+        media: { desktop },
       },
-    }) => large} {
+    }) => desktop} {
     height: 75vh;
   }
   @media ${({
       theme: {
-        media: { middle },
+        media: { tablet },
       },
-    }) => middle} {
+    }) => tablet} {
     flex-direction: column;
   }
 `;
@@ -163,6 +162,8 @@ const Frame = styled(motion.div)`
   display: flex;
   gap: 1rem;
   border-radius: 10px;
+  overflow: hidden;
+  overflow-x: scroll;
   img {
     height: 70vh;
     width: 55vw;
@@ -172,21 +173,33 @@ const Frame = styled(motion.div)`
   }
   @media ${({
       theme: {
-        media: { large },
+        media: { laptop },
       },
-    }) => large} {
-    overflow: hidden;
-    overflow-x: scroll;
+    }) => laptop} {
+    img {
+      height: 60vh;
+      width: 50vw;
+    }
   }
   @media ${({
       theme: {
-        media: { middle },
+        media: { tablet },
       },
-    }) => middle} {
+    }) => tablet} {
     flex-direction: column;
+    overflow: hidden;
     img {
-      height: 60vh;
-      width: 100%;
+      width: 95%;
+    }
+  }
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    img {
+      height: 50vh;
+      width: 95%;
     }
   }
 `;

@@ -52,7 +52,8 @@ export default function Project() {
 const ProjectFrame = styled.div`
   position: absolute;
   height: 75vh;
-  width: 40vw;
+  // width: 40vw;
+  width: 700px;
   border-radius: 10px;
   background-color: white;
   overflow: hidden;
@@ -65,10 +66,24 @@ const ProjectFrame = styled.div`
   }
   @media ${({
       theme: {
-        media: { middle },
+        media: { laptop },
       },
-    }) => middle} {
-    width: 50vw;
+    }) => laptop} {
+    width: 600px;
+  }
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
+    width: 500px;
+  }
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    width: 450px;
   }
 `;
 
@@ -91,11 +106,29 @@ const ProjectCard = styled(motion.div)`
   }
   @media ${({
       theme: {
-        media: { middle },
+        media: { laptop },
       },
-    }) => middle} {
+    }) => laptop} {
+    img {
+      height: 50vh;
+    }
+  }
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
     img {
       height: 40vh;
+    }
+  }
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    img {
+      height: 35vh;
     }
   }
 `;
@@ -116,10 +149,4 @@ const Subject = styled(motion.div)`
   transition: transform 0.3s ease;
   background-color: #222831;
   // background-color: ${({ idx, hover }) => idx === hover && "white"};
-  @media ${({
-      theme: {
-        media: { middle },
-      },
-    }) => middle} {
-  }
 `;
