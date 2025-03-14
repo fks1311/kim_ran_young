@@ -69,6 +69,13 @@ const ViewProject = styled.div`
     background-color: transparent;
     cursor: pointer;
   }
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    align-items: center;
+  }
 `;
 
 // about me 텍스트를 배열로 하여 무한히 흐르는 텍스트 효과를 하려 했으나,

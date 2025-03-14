@@ -13,6 +13,7 @@ export default function AboutMeFrame() {
           style={{
             borderRadius: "10px",
           }}
+          unoptimized={true}
           alt="profile"
         />
       </div>
@@ -139,8 +140,9 @@ const AboutFrame = styled.div`
     .profile {
       height: 20vh;
       img {
-        height: 40vh;
-        padding: 5rem 0px;
+        height: 45vh;
+        // padding: 5rem 0px;
+        margin: 5rem 0px;
       }
     }
     .about {

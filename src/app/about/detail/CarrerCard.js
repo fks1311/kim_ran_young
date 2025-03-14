@@ -118,7 +118,7 @@ const SummaryFrame = styled.div`
         media: { tablet },
       },
     }) => tablet} {
-    flex-direction: row;
+    // flex-direction: row;
     align-items: flex-start;
     gap: 2rem;
   }

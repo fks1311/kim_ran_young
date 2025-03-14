@@ -62,6 +62,6 @@ const Container = styled(motion.div)`
         media: { smaller },
       },
     }) => smaller} {
-    left: ${({ pathname }) => (pathname.includes("about") ? `30%` : `null`)};
+    left: ${({ pathname }) => (pathname.includes("about") ? `22%` : `null`)};
   }
 `;
