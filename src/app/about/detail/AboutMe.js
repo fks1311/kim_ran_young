@@ -131,9 +131,9 @@ const AboutFrame = styled.div`
   }
   @media ${({
       theme: {
-        media: { middle },
+        media: { laptop },
       },
-    }) => middle} {
+    }) => laptop} {
     display: flex;
     flex-direction: column;
     .profile {
@@ -146,9 +146,46 @@ const AboutFrame = styled.div`
     .about {
       .intro {
         .brief-info {
+          font-size: 1.35rem;
           span:nth-child(6) {
             margin-right: 5rem;
           }
+        }
+      }
+      .brief-intro {
+        font-size: 1.6rem;
+      }
+    }
+  }
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
+    .about {
+      .intro {
+        .name {
+          font-size: 5rem;
+        }
+        .brief-info {
+          grid-template-columns: 0.5fr 2fr;
+          gap: 1.5rem;
+        }
+      }
+      .brief-intro {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    .about {
+      .brief-intro {
+        max-width: 100%;
+        ul {
         }
       }
     }

@@ -97,10 +97,49 @@ const SkillContent = styled.div`
   }
   @media ${({
       theme: {
-        media: { middle },
+        media: { laptop },
       },
-    }) => middle} {
+    }) => laptop} {
     grid-template-columns: repeat(3, 1fr);
+    div:nth-child(4),
+    div:nth-child(7),
+    div:nth-child(8) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      svg {
+        height: 8rem;
+      }
+    }
+  }
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
+    grid-template-columns: repeat(2, 1fr);
+    div:nth-child(4),
+    div:nth-child(7),
+    div:nth-child(8) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.8rem;
+      svg {
+        height: 8rem;
+      }
+    }
+  }
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    div:nth-child(7) {
+      text-align: center;
+    }
   }
 `;
 

@@ -45,9 +45,23 @@ const Container = styled(motion.div)`
   left: ${({ pathname }) => (pathname.includes("about") ? `70%` : `null`)};
   @media ${({
       theme: {
-        media: { middle },
+        media: { laptop },
       },
-    }) => middle} {
+    }) => laptop} {
+    left: ${({ pathname }) => (pathname.includes("about") ? `70%` : `null`)};
+  }
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
     left: ${({ pathname }) => (pathname.includes("about") ? `50%` : `null`)};
+  }
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    left: ${({ pathname }) => (pathname.includes("about") ? `30%` : `null`)};
   }
 `;

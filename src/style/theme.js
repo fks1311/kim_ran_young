@@ -5,13 +5,6 @@
 // min-width(최소 width) 즉 1000px 이상인 경우 : 최소 ~ 이상 / 모바일 -> 데스크
 // max-width(최대 width) 즉 1000px 이하인 경우 : 최대 ~ 이하 / 데스크 -> 모바일
 
-const Sizes = {
-  lessmobile: `580px`,
-  mobile: `768px`,
-  tablet: `1023px`,
-  desktop: `1024px`,
-};
-
 const deviceSizes = {
   smaller: `576px`,
   tablet: `768px`,

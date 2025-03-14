@@ -54,6 +54,24 @@ const HeaderFrame = styled.div`
     position: relative;
     top: -4.5rem;
   }
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
+    h1 {
+      font-size: 13rem;
+    }
+  }
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    h1 {
+      font-size: 10rem;
+    }
+  }
 `;
 
 /* TODO

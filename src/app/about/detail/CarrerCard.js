@@ -97,6 +97,13 @@ const TimeFrame = styled(motion.div)`
   line-height: 2rem;
   padding: 8rem 0px;
   background-color: white;
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
+    flex-direction: column;
+  }
 `;
 
 const SummaryFrame = styled.div`
@@ -108,10 +115,12 @@ const SummaryFrame = styled.div`
   padding: 1rem;
   @media ${({
       theme: {
-        media: { middle },
+        media: { tablet },
       },
-    }) => middle} {
-    flex: 0.3;
+    }) => tablet} {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
   }
 `;
 const PeriodContainer = styled.div``;
@@ -131,6 +140,15 @@ const CompanyContainer = styled.div`
     font-style: italic;
     color: #0b0c0f;
     letter-spacing: 0.1rem;
+  }
+  @media ${({
+      theme: {
+        media: { tablet },
+      },
+    }) => tablet} {
+    // flex-direction: row;
+    margin-top: 0;
+    align-items: flex-start;
   }
 `;
 
