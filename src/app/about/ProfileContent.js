@@ -71,6 +71,12 @@ const HeaderFrame = styled.div`
     h1 {
       font-size: 10rem;
     }
+    .border-bottom-line {
+      top: -4rem;
+    }
+    .border-bottom-white {
+      top: -4rem;
+    }
   }
 `;
 
