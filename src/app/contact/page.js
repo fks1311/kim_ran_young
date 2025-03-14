@@ -68,6 +68,7 @@ export default function Contact() {
             style={{
               borderRadius: "10px",
             }}
+            unoptimized={true}
             alt="profile"
           />
           <p>KIM RAN YOUNG</p>
@@ -97,14 +98,38 @@ const Frame = styled.div`
   font-size: 2rem;
   border-radius: 10px;
   background-color: white;
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    min-width: 350px;
+    padding: 3rem;
+  }
 `;
 const HeadContainer = styled.div`
   display: flex;
   font-size: 5rem;
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    font-size: 3rem;
+  }
 `;
 const ContentContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.3rem;
+  @media ${({
+      theme: {
+        media: { smaller },
+      },
+    }) => smaller} {
+    img {
+      height: 30vh;
+    }
+  }
 `;
