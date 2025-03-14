@@ -219,5 +219,9 @@ const ListBtn = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    &:hover {
+      scale: 1.2;
+      transition-duration: 0.5s;
+    }
   }
 `;
