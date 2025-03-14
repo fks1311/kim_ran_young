@@ -116,7 +116,7 @@ const AboutFrame = styled.div`
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: lighter;
       max-width: 80%;
       // line-height: 3rem;
