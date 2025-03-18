@@ -6,6 +6,7 @@ import about_gif from "@/assets/portfolio/about.gif";
 
 // moviezip
 import mvz_main from "@/assets/moviezip/home-main.png";
+import mvz_home from "@/assets/moviezip/mvz_home.gif";
 
 export default function projectJson() {
   return [
@@ -33,7 +34,7 @@ export default function projectJson() {
       project_detail:
         "Next.js의 page router 기반으로 설계된 영화 정보 제공 사이트입니다. 일별/주간 박스오피스 정보와 장르/연도/국가별 영화 정보 목록을 확인 할 수 있으며, 관련 데이터들은 한국영상자료원과 영화진흥위원회 Open API를 통해 제공받았습니다. 해당 프로젝트에서는 Next.js의 page router의 데이터 Fetching과 react-query의 데이터 Fetching 두 가지 방법으로 데이터 관리가 이루어졌습니다.",
       use_tech: "Next.js, react-query, axios, styled-components, framer-motion",
-      project_images: [mvz_main, blank, blank],
+      project_images: [mvz_main, mvz_home, blank],
       link: "https://velog.io/@well_log/posts",
     },
   ];
