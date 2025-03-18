@@ -18,7 +18,7 @@ export default function projectJson() {
       project_detail:
         "현재 보고 계신 포트폴리오이며, Next.js 프레임워크를 사용했습니다. 현재 이 포트폴리오는 app router 방식으로 설계되어 있으며, styled-components와 framer-motion의 라이브러리를 활용하였습니다.",
       use_tech: "Next.js, styled-components, framer-motion",
-      project_images: [home_gif, home_gif, home_gif, home_gif, home_gif],
+      project_images: [home_gif, about_gif, home_gif, home_gif, home_gif],
       link: "/",
     },
     {
