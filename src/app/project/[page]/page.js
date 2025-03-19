@@ -5,11 +5,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import projectJson from "@/lib/project";
 import decodedHTML from "@/lib/decodedHTML";
 import Metadata from "@/components/Metadata";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
+import { kryJson } from "@/lib/function";
 
 export default function DetailPage() {
   const params = useParams();
@@ -20,14 +20,18 @@ export default function DetailPage() {
   const [curIdx, setCurIdx] = useState();
 
   useEffect(() => {
-    const filter = projectJson().filter((f) => f.subject === decodedHTML(params.page));
-    setProjects(filter);
+    kryJson().then((res) => {
+      const filter = res.res.filter((f) => f.subject === decodedHTML(params.page));
+      const project = res.res.map((item) => ({ subject: item.subject }));
+      const currentIdx = project.findIndex((item) => item.subject === filter[0].subject);
+      setProjects(filter);
+      setList(project);
+      setCurIdx(currentIdx);
+    });
     setLoading(false);
-    const project = projectJson().map((item) => ({ subject: item.subject }));
-    const currentIdx = project.findIndex((item) => item.subject === filter[0].subject);
-    setList(project);
-    setCurIdx(currentIdx);
   }, [params.page]);
+
+  console.log(projects);
 
   const liveClick = (subject, link) => {
     subject === "Portfolio" ? router.push(link) : window.open(link, "_blank");
@@ -107,7 +111,14 @@ export default function DetailPage() {
               </Project>
               <Frame>
                 {project.project_images.map((img, idx) => (
-                  <Image key={idx} src={img} unoptimized={true} alt={`프로젝트 이미지 ${idx}`} />
+                  <Image
+                    key={idx}
+                    src={img}
+                    width={400}
+                    height={500}
+                    unoptimized={true}
+                    alt={`프로젝트 이미지 ${idx}`}
+                  />
                 ))}
               </Frame>
             </Fragment>
