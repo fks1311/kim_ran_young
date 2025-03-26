@@ -1,6 +1,5 @@
-import blank from "@/lib/blankImg.svg";
-// portfolio
 import portfolio_main from "@/assets/portfolio-main.png";
+import day6_main from "@/assets/day6-main.png";
 import mvz_main from "@/assets/mvz-main.png";
 
 export default function projectJson() {
@@ -14,7 +13,7 @@ export default function projectJson() {
       link: "/",
     },
     {
-      thumbnails: blank,
+      thumbnails: day6_main,
       subject: "Day6 Fan Ground",
       project_detail:
         "밴드 Day6의 팬 페이지입니다. Youtube Open API를 활용하여 Day6 공식 유튜브 계정과 멤버 개인 유튜브 계정의 재생목록을 가져왔으며, dummy API를 만들어 밴드 Day6의 앨범 목록과 수록곡 등을 확인할 수 있습니다. 해당 프로젝트에서는 react-query(tanstack Query) 라이브러리를 활용하여 데이터를 관리했습니다.",
