@@ -31,8 +31,6 @@ export default function DetailPage() {
     setLoading(false);
   }, [params.page]);
 
-  console.log(projects);
-
   const liveClick = (subject, link) => {
     subject === "Portfolio" ? router.push(link) : window.open(link, "_blank");
   };
