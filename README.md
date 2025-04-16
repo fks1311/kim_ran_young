@@ -1,3 +1,12 @@
 ## PORTFOLIO
 
-Next.js의 app router 기반 포토폴리오
+## Introduction
+
+Next.js(app router) 기반으로 만들어진 웹 사이트
+
+## Usable skills & Libraries
+
+- Next.js(app router)
+- Axios
+- Styled-components
+- Framer-motion
