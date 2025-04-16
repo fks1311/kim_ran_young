@@ -10,6 +10,7 @@ import Metadata from "@/components/Metadata";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { kryJson } from "@/lib/function";
+import { MdArrowOutward } from "react-icons/md";
 
 export default function DetailPage() {
   const params = useParams();
@@ -18,6 +19,7 @@ export default function DetailPage() {
   const [projects, setProjects] = useState([]); // 현 프로젝트 정보
   const [list, setList] = useState([]);
   const [curIdx, setCurIdx] = useState();
+  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     kryJson().then((res) => {
@@ -50,17 +52,6 @@ export default function DetailPage() {
     }
   };
 
-  const underlineVariants = {
-    initial: { width: "100%" },
-    visible: { width: "100%" },
-    hover: {
-      rotateX: 360,
-      transition: {
-        duration: 0.8,
-      },
-    },
-  };
-
   return (
     <Layout>
       {loading ? (
@@ -84,13 +75,14 @@ export default function DetailPage() {
                   <p>{project.use_tech}</p>
                 </div>
                 <ViewLive
-                  variants={underlineVariants}
-                  initial="initial"
-                  animate="visible"
-                  whileHover="hover"
+                  onMouseOver={() => setHover(true)}
+                  onMouseOut={() => setHover(false)}
                   onClick={() => liveClick(project.subject, project.link)}
                 >
                   VIEW LIVE PROJECT
+                  <motion.div animate={{ x: hover ? 2 : 0, y: hover ? 0 : 2 }}>
+                    <MdArrowOutward color="white" />
+                  </motion.div>
                 </ViewLive>
                 <ListBtn>
                   <div className="btn" onClick={() => prevClick(curIdx)}>
@@ -222,15 +214,24 @@ const ViewLive = styled(motion.div)`
 `;
 const ListBtn = styled.div`
   display: flex;
+  // flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
   .btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    opacity: 0.5;
     &:hover {
-      scale: 1.2;
-      transition-duration: 0.5s;
+      opacity: 1;
     }
+  }
+  @media ${({
+      theme: {
+        media: { laptop },
+      },
+    }) => laptop} {
+    // flex-direction: column;
+    flex-wrap: wrap;
   }
 `;
