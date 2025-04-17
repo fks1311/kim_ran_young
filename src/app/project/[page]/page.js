@@ -8,9 +8,10 @@ import { useParams, useRouter } from "next/navigation";
 import decodedHTML from "@/lib/decodedHTML";
 import Metadata from "@/components/Metadata";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-import { MdClose } from "react-icons/md";
-import { kryJson } from "@/lib/function";
 import { MdArrowOutward } from "react-icons/md";
+import { MdClose } from "react-icons/md";
+import { SiVelog } from "react-icons/si";
+import { kryJson } from "@/lib/function";
 
 export default function DetailPage() {
   const params = useParams();
@@ -19,7 +20,7 @@ export default function DetailPage() {
   const [projects, setProjects] = useState([]); // 현 프로젝트 정보
   const [list, setList] = useState([]);
   const [curIdx, setCurIdx] = useState();
-  const [hover, setHover] = useState(false);
+  const [hover, setHover] = useState([false, false]);
 
   useEffect(() => {
     kryJson().then((res) => {
@@ -74,13 +75,24 @@ export default function DetailPage() {
                   <p className="subject">use tech</p>
                   <p>{project.use_tech}</p>
                 </div>
+                <div
+                  className="blog"
+                  onMouseOver={() => setHover((prev) => [true, prev[1]])}
+                  onMouseOut={() => setHover((prev) => [false, prev[1]])}
+                  onClick={() => window.open(project.blog, "_blank")}
+                >
+                  <SiVelog /> <p>프로젝트 후기 읽기</p>
+                  <motion.div animate={{ x: hover[0] ? 2 : 0, y: hover[0] ? 0 : 2 }}>
+                    <MdArrowOutward />
+                  </motion.div>
+                </div>
                 <ViewLive
-                  onMouseOver={() => setHover(true)}
-                  onMouseOut={() => setHover(false)}
+                  onMouseOver={() => setHover((prev) => [prev[0], true])}
+                  onMouseOut={() => setHover((prev) => [prev[0], false])}
                   onClick={() => liveClick(project.subject, project.link)}
                 >
                   VIEW LIVE PROJECT
-                  <motion.div animate={{ x: hover ? 2 : 0, y: hover ? 0 : 2 }}>
+                  <motion.div animate={{ x: hover[1] ? 2 : 0, y: hover[1] ? 0 : 2 }}>
                     <MdArrowOutward color="white" />
                   </motion.div>
                 </ViewLive>
@@ -146,7 +158,7 @@ const Project = styled.div`
   padding: 5rem;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
   line-height: 2.5rem;
   .project-div {
     display: flex;
@@ -156,6 +168,20 @@ const Project = styled.div`
   .subject {
     font-size: 1.3rem;
     opacity: 0.5;
+  }
+  .blog {
+    display: flex;
+    align-items: center;
+    opacity: 0.5;
+    cursor: pointer;
+
+    p {
+      margin-left: 0.5rem;
+    }
+    &:hover {
+      font-weight: bold;
+      color: #67ae6e;
+    }
   }
 `;
 const Frame = styled(motion.div)`
