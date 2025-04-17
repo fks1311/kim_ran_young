@@ -2,10 +2,14 @@
 
 import ProfileCard from "@/components/ProfileCard";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import styled, { keyframes } from "styled-components";
+import { MdArrowOutward } from "react-icons/md";
+import { useState } from "react";
 
 export default function Slide() {
   const router = useRouter();
+  const [hover, setHover] = useState(false);
 
   return (
     <SlideText>
@@ -17,7 +21,16 @@ export default function Slide() {
       </h1>
       <ViewProject>
         Go to the project right away.
-        <button onClick={() => router.push("/project")}>VIEW MY PROJECTS</button>
+        <button
+          onMouseOver={() => setHover(true)}
+          onMouseOut={() => setHover(false)}
+          onClick={() => router.push("/project")}
+        >
+          VIEW MY PROJECTS
+          <motion.div animate={{ x: hover ? 2 : 0, y: hover ? 0 : 2 }}>
+            <MdArrowOutward />
+          </motion.div>
+        </button>
       </ViewProject>
       <ProfileCard />
     </SlideText>
@@ -60,7 +73,9 @@ const ViewProject = styled.div`
   font-size: 2rem;
   gap: 2rem;
   button {
-    // width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 250px;
     padding: 1rem;
     color: white;

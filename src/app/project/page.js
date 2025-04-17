@@ -95,6 +95,7 @@ const ProjectContainer = styled.div`
   height: calc(75vh - 70px);
   overflow-y: scroll;
   box-sizing: border-box;
+  cursor: pointer;
 `;
 const ProjectCard = styled(motion.div)`
   position: relative;
