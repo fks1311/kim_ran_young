@@ -101,7 +101,7 @@ const SkillContent = styled.div`
     width: 5rem;
     color: white;
   }
-  div:nth-child(7) {
+  div:nth-child(9) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,9 +115,7 @@ const SkillContent = styled.div`
       },
     }) => laptop} {
     grid-template-columns: repeat(3, 1fr);
-    div:nth-child(4),
-    div:nth-child(7),
-    div:nth-child(8) {
+    div {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -133,9 +131,7 @@ const SkillContent = styled.div`
       },
     }) => tablet} {
     grid-template-columns: repeat(2, 1fr);
-    div:nth-child(4),
-    div:nth-child(7),
-    div:nth-child(8) {
+    div {
       display: flex;
       flex-direction: column;
       align-items: center;
