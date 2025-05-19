@@ -1,7 +1,16 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { BiRadioCircle } from "react-icons/bi";
-import { SiReact, SiRecoil, SiReactquery, SiExpress, SiStyledcomponents, SiFramer } from "react-icons/si";
+import {
+  SiJavascript,
+  SiReact,
+  SiTypescript,
+  SiRecoil,
+  SiReactquery,
+  SiExpress,
+  SiStyledcomponents,
+  SiFramer,
+} from "react-icons/si";
 import { RiReactjsFill, RiNextjsLine, RiNodejsFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 
@@ -9,9 +18,14 @@ export default function UsableSkillFrame() {
   const [hover, setHover] = useState();
   const [curPosition, setCurPosition] = useState({ x: 0, y: 0 });
   const skills = [
+    { tool: "JavaScript", icon: <SiJavascript /> },
     {
       tool: "React",
       icon: <SiReact />,
+    },
+    {
+      tool: "TypeScript",
+      icon: <SiTypescript />,
     },
     {
       tool: "Next.js",
@@ -74,7 +88,7 @@ const SubTitle = styled.div`
 const SkillContent = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   gap: 3rem;
   padding: 5rem;
