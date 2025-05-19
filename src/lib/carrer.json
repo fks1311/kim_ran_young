@@ -66,6 +66,7 @@
             "task_list": [
               "TCP 기반의 신규 금융사 연동 및 백엔드 영역 구현",
               "운영망 네트워크 연결 작업 및 관리",
+              "금융사 통신 모니터링 로그 구현",
               "상담사용 대출 관리 페이지의 고객별 대출 진행 상황 에러 처리 진행",
               "use : ES6, Express.js, Axios, iconv-lite, MariaDB, MongoDB"
             ]
