@@ -11,7 +11,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { MdArrowOutward } from "react-icons/md";
 import { MdClose } from "react-icons/md";
 import { SiVelog } from "react-icons/si";
-import { kryJson } from "@/lib/function";
+import { fetchS3 } from "@/lib/function";
 
 export default function DetailPage() {
   const params = useParams();
@@ -23,7 +23,7 @@ export default function DetailPage() {
   const [hover, setHover] = useState([false, false]);
 
   useEffect(() => {
-    kryJson().then((res) => {
+    fetchS3().then((res) => {
       const filter = res.res.filter((f) => f.subject === decodedHTML(params.page));
       const project = res.res.map((item) => ({ subject: item.subject }));
       const currentIdx = project.findIndex((item) => item.subject === filter[0].subject);
