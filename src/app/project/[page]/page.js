@@ -197,6 +197,9 @@ const Project = styled.div`
   flex-direction: column;
   gap: 3rem;
   line-height: 2.5rem;
+  height: 85%;
+  overflow: hidden;
+  overflow-y: auto;
   .project-div {
     display: flex;
     flex-direction: column;
@@ -236,6 +239,17 @@ const Project = styled.div`
       opacity: 1;
     }
   }
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b3b3b3;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #282828;
+  }
 `;
 const Frame = styled(motion.div)`
   flex: 1;
@@ -244,6 +258,17 @@ const Frame = styled(motion.div)`
   border-radius: 10px;
   overflow: hidden;
   overflow-x: scroll;
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b3b3b3;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #282828;
+  }
   img {
     height: 70vh;
     width: 55vw;
