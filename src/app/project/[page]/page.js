@@ -10,7 +10,7 @@ import Metadata from "@/components/Metadata";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { MdArrowOutward } from "react-icons/md";
 import { MdClose } from "react-icons/md";
-import { SiVelog } from "react-icons/si";
+import { SiGithub, SiVelog } from "react-icons/si";
 import { fetchS3 } from "@/lib/function";
 
 export default function DetailPage() {
@@ -20,7 +20,7 @@ export default function DetailPage() {
   const [projects, setProjects] = useState([]); // 현 프로젝트 정보
   const [list, setList] = useState([]);
   const [curIdx, setCurIdx] = useState();
-  const [hover, setHover] = useState([false, false]);
+  const [hover, setHover] = useState([false, false, false]);
 
   useEffect(() => {
     fetchS3().then((res) => {
@@ -69,30 +69,63 @@ export default function DetailPage() {
                 </div>
                 <div>
                   <p className="subject">project details</p>
-                  <p>{project.project_detail}</p>
+                  {console.log(project)}
+                  {project.project_detail.map((data, idx) => (
+                    <UlStyle key={idx}>
+                      {data.includes("GitHub로 관리하던 JSON") ? (
+                        <li>
+                          {data}
+                          &nbsp;
+                          <a
+                            href="https://velog.io/@well_log/Portfolio-GitHub-AWS-S3-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9D%B4%EC%A0%84"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: "#67ae6e", textDecoration: "none" }}
+                          >
+                            🔗 관련 글 보기
+                          </a>
+                        </li>
+                      ) : (
+                        <li>{data}</li>
+                      )}
+                    </UlStyle>
+                  ))}
                 </div>
                 <div>
                   <p className="subject">use tech</p>
                   <p>{project.use_tech}</p>
                 </div>
-                <div
-                  className="blog"
-                  onMouseOver={() => setHover((prev) => [true, prev[1]])}
-                  onMouseOut={() => setHover((prev) => [false, prev[1]])}
-                  onClick={() => window.open(project.blog, "_blank")}
-                >
-                  <SiVelog /> <p>프로젝트 후기 읽기</p>
-                  <motion.div animate={{ x: hover[0] ? 2 : 0, y: hover[0] ? 0 : 2 }}>
-                    <MdArrowOutward />
-                  </motion.div>
-                </div>
+                <LinkContainer>
+                  <div
+                    className="github"
+                    onMouseOver={() => setHover((prev) => [true, prev[1], prev[2]])}
+                    onMouseOut={() => setHover((prev) => [false, prev[1], prev[2]])}
+                    onClick={() => window.open(project.github, "_blank")}
+                  >
+                    <SiGithub /> <p>GitHub</p>
+                    <motion.div animate={{ x: hover[0] ? 2 : 0, y: hover[0] ? 0 : 2 }}>
+                      <MdArrowOutward />
+                    </motion.div>
+                  </div>
+                  <div
+                    className="blog"
+                    onMouseOver={() => setHover((prev) => [prev[0], true, prev[2]])}
+                    onMouseOut={() => setHover((prev) => [prev[0], false, prev[2]])}
+                    onClick={() => window.open(project.blog, "_blank")}
+                  >
+                    <SiVelog /> <p>프로젝트 후기 읽기</p>
+                    <motion.div animate={{ x: hover[1] ? 2 : 0, y: hover[1] ? 0 : 2 }}>
+                      <MdArrowOutward />
+                    </motion.div>
+                  </div>
+                </LinkContainer>
                 <ViewLive
-                  onMouseOver={() => setHover((prev) => [prev[0], true])}
-                  onMouseOut={() => setHover((prev) => [prev[0], false])}
+                  onMouseOver={() => setHover((prev) => [prev[0], prev[1], true])}
+                  onMouseOut={() => setHover((prev) => [prev[0], prev[1], false])}
                   onClick={() => liveClick(project.subject, project.link)}
                 >
                   VIEW LIVE PROJECT
-                  <motion.div animate={{ x: hover[1] ? 2 : 0, y: hover[1] ? 0 : 2 }}>
+                  <motion.div animate={{ x: hover[2] ? 2 : 0, y: hover[2] ? 0 : 2 }}>
                     <MdArrowOutward color="white" />
                   </motion.div>
                 </ViewLive>
@@ -152,8 +185,12 @@ const Layout = styled.div`
     flex-direction: column;
   }
 `;
+const LinkContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
 const Project = styled.div`
-  flex: 0.6;
+  flex: 0.8;
   font-size: 1.5rem;
   padding: 5rem;
   display: flex;
@@ -169,6 +206,21 @@ const Project = styled.div`
     font-size: 1.3rem;
     opacity: 0.5;
   }
+  .github {
+    display: flex;
+    align-items: center;
+    opacity: 0.5;
+    cursor: pointer;
+
+    p {
+      margin-left: 0.5rem;
+    }
+    &:hover {
+      font-weight: bold;
+      color: #fbfbfb;
+      opacity: 1;
+    }
+  }
   .blog {
     display: flex;
     align-items: center;
@@ -181,6 +233,7 @@ const Project = styled.div`
     &:hover {
       font-weight: bold;
       color: #67ae6e;
+      opacity: 1;
     }
   }
 `;
@@ -260,4 +313,10 @@ const ListBtn = styled.div`
     // flex-direction: column;
     flex-wrap: wrap;
   }
+`;
+
+const UlStyle = styled.ul`
+  list-style-type: square;
+  padding-left: 1.5rem;
+  margin: 0;
 `;

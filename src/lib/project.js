@@ -2,6 +2,7 @@ import portfolio_main from "@/assets/portfolio-main.png";
 import day6_main from "@/assets/day6-main.png";
 import mvz_main from "@/assets/mvz-main.png";
 import to_do_focus_main from "@/assets/todofocus_main.png";
+import spotify_main from "@/assets/spotify.png";
 
 export default function projectJson() {
   return [
@@ -29,5 +30,6 @@ export default function projectJson() {
       project_detail:
         "Typescript를 사용해보기 위해 만들어진 사이트로, React 기반으로 만들어진 Todo + 뽀모도로를 합친 사이트입니다. 오늘/내일/이번주/완료됨으로 구분되어 있습니다. 뽀모도로는 기본 25분으로 설정했으며 본인이 원하는 타이머로 조정도 가능합니다. 또한 입력된 일정들은 선택된 네비에 따라 완료/미루기/취소/삭제가 가능합니다. (완료됨에 있는 일정들은 선택 시, 오늘 일정으로 추가됩니다.) 하루 경과 시, 내일의 일정은 오늘로 이동하며, 일주일 경과 시 모든 일정과 타이머 시간은 초기화됩니다. 해당 프로젝트는 DB를 사용하지 않고 LocalStorage에 데이터를 저장하여 관리합니다.",
     },
+    { thumbnails: spotify_main, subject: "Spotify" },
   ];
 }
