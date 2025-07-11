@@ -69,7 +69,6 @@ export default function DetailPage() {
                 </div>
                 <div>
                   <p className="subject">project details</p>
-                  {console.log(project)}
                   {project.project_detail.map((data, idx) => (
                     <UlStyle key={idx}>
                       {data.includes("GitHub로 관리하던 JSON") ? (
